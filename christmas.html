@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>🎄 圣诞快乐</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(#0a2342, #145374);
+            color: white;
+            overflow: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+        }
+
+        p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .tree {
+            font-size: 100px;
+            text-align: center;
+            margin-top: 30px;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #0f0; }
+            to { text-shadow: 0 0 30px #0f0; }
+        }
+
+        .card {
+            max-width: 420px;
+            margin: 30px auto;
+            background: rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 20px;
+            background: #e63946;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff4d5a;
+        }
+
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            user-select: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>🎅 圣诞快乐 🎄</h1>
+        <p>愿你平安、喜乐、幸福常伴</p >
+    </header>
+
+    <div class="tree">🎄</div>
+
+    <div class="card">
+        <h2>圣诞祝福</h2>
+        <p id="wish">点击按钮领取祝福 🎁</p >
+        <button onclick="sendWish()">领取祝福</button>
+    </div>
+
+    <script>
+        function sendWish() {
+            const wishes = [
+                "愿你新的一年事事顺心 ✨",
+                "愿温暖与快乐围绕你 🎁",
+                "愿梦想在圣诞夜悄悄实现 🎄",
+                "愿你拥有满满的好运与爱 ❤️"
+            ];
+            const index = Math.floor(Math.random() * wishes.length);
+            document.getElementById("wish").innerText = wishes[index];
+        }
+
+        // 生成雪花
+        function createSnowflake() {
+            const snowflake = document.createElement("div");
+            snowflake.className = "snowflake";
+            snowflake.innerText = "❄";
+            snowflake.style.left = Math.random() * window.innerWidth + "px";
+            snowflake.style.fontSize = Math.random() * 20 + 10 + "px";
+            snowflake.style.animationDuration = Math.random() * 5 + 5 + "s";
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 10000);
+        }
+
+        setInterval(createSnowflake, 300);
+    </script>
+</body>
+</html>
